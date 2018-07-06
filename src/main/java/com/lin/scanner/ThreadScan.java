@@ -410,7 +410,10 @@ public class ThreadScan implements Runnable {
                     checkPortRange(port[i]);
                 } catch (NumberFormatException | InputMismatchException e1) {
                     logger.debug("错误:端口地址应为0-65535的整数--第{}个输入框内容为{}", i + 1, portTextField[i].getText());
-
+                    String msg = "错误:端口地址应为0-65535的整数--"
+                            + "第" + (i + 1)
+                            + "个输入框内容为:" + portTextField[i].getText();
+                    JOptionPane.showMessageDialog(main, msg, "IP地址错误", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
             }
@@ -421,6 +424,9 @@ public class ThreadScan implements Runnable {
                 checkThreadsNumRange(numOfThreads);
             } catch (NumberFormatException | InputMismatchException e1) {
                 logger.debug("错误:线程数应为0-200的整数--输入框内容为{}", numOfThreadsTextField.getText());
+                String msg = "错误:线程数应为0-200的整数--输入框内容为"
+                        + numOfThreadsTextField.getText();
+                JOptionPane.showMessageDialog(main, msg, "IP地址错误", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
